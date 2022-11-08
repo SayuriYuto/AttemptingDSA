@@ -1,15 +1,13 @@
 class Solution {
     public int maximumWealth(int[][] accounts) {
-        ArrayList<Integer> arr = new ArrayList<Integer>();
+        int max = Integer.MIN_VALUE;
         for(int i =0;i<accounts.length;i++){
-            int total=0;
+            int sum=0;
             for(int j=0;j<accounts[i].length;j++){
-                total+=accounts[i][j];
+                sum+=accounts[i][j];
             }
-            arr.add(total);
+            if(sum>max) max = sum;
         }
-        Collections.sort(arr,Collections.reverseOrder());        System.out.println(arr);
-
-        return arr.get(0);
+        return max;
     }
 }
