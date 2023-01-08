@@ -116,13 +116,36 @@ class Node{
 class Tree {
     ArrayList<Integer> postOrder(Node node) {
         ArrayList<Integer> ans = new ArrayList<>();
-        print(node,ans);
+        Stack<Node> s1 = new Stack<>();
+        Stack<Node> s2 = new Stack<>();
+        if(node==null){
+            return ans;
+        }
+        s1.push(node);
+        while(!s1.empty()){
+            Node temp = s1.pop();
+            s2.push(temp);
+            if(temp.left!=null)
+            s1.push(temp.left);
+            if(temp.right!=null)
+            s1.push(temp.right);
+        }
+        while(!s2.empty()){
+            ans.add(s2.pop().data);
+        }
         return ans;
     }
-    void print(Node node, ArrayList<Integer> ans){
-        if(node==null) return;
-        print(node.left,ans);
-        print(node.right,ans);
-        ans.add(node.data);
-    }
+    
+    // Recurssive approach
+    // ArrayList<Integer> postOrder(Node node) {
+    //     ArrayList<Integer> ans = new ArrayList<>();
+    //     print(node,ans);
+    //     return ans;
+    // }
+    // void print(Node node, ArrayList<Integer> ans){
+    //     if(node==null) return;
+    //     print(node.left,ans);
+    //     print(node.right,ans);
+    //     ans.add(node.data);
+    // }
 }
