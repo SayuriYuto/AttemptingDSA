@@ -111,21 +111,41 @@ class Node {
 } */
 class Solution {
     // Function to return a list containing the inorder traversal of the tree.
+    
     ArrayList<Integer> inOrder(Node root) {
         ArrayList<Integer> ans = new ArrayList<>();
-        if(root==null){
-            return ans;
+        Stack<Node> stack = new Stack<>();
+        Node cur = root;
+        while(!stack.empty()||cur!=null){
+            if(cur!=null){
+                stack.push(cur);
+                cur=cur.left;
+            }
+            else{
+                Node temp = stack.pop();
+                ans.add(temp.data);
+                cur=temp.right;
+            }
         }
-        print(root,ans);
         return ans;
     }
     
-    void print(Node root,ArrayList<Integer> ans){
-        if(root==null){
-            return;
-        }
-        print(root.left,ans);
-        ans.add(root.data);
-        print(root.right,ans);
-    }
+    // Recurssive approach
+    // ArrayList<Integer> inOrder(Node root) {
+    //     ArrayList<Integer> ans = new ArrayList<>();
+    //     if(root==null){
+    //         return ans;
+    //     }
+    //     print(root,ans);
+    //     return ans;
+    // }
+    
+    // void print(Node root,ArrayList<Integer> ans){
+    //     if(root==null){
+    //         return;
+    //     }
+    //     print(root.left,ans);
+    //     ans.add(root.data);
+    //     print(root.right,ans);
+    // }
 }
