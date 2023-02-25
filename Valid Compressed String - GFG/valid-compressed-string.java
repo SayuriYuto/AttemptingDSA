@@ -24,8 +24,7 @@ class GFG {
 class Solution {
     static int checkCompressed(String S, String T) {
         // code here
-        int i=0; //for S string
-        int j=0; //for T string
+        int i=0,j=0;
 
         while(i<T.length()&& j<S.length()){
             if(T.charAt(i)>='0' && T.charAt(i)<='9'){ 
@@ -39,11 +38,11 @@ class Solution {
                 j=j+count;
             }
             else if(T.charAt(i)!=S.charAt(j)){
-            return 0;
+             return 0;
             }
             else{
-            i++;
-            j++;
+                i++;
+                j++;
             }
         }
         if(i==T.length() && j==S.length()){
